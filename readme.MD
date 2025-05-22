@@ -11,7 +11,6 @@ A lightweight, flexible, and beautifully designed JavaScript library for interac
 
 * **Lightweight & No Dependencies:** Built with vanilla JavaScript, keeping your bundle size small.
 * **Declarative API:** Define your tours with simple, readable step configurations.
-* **Figma-Inspired Aesthetics:** Modern, clean, and visually appealing default styles.
 * **Smart Positioning:** Tooltips intelligently adjust to stay within the viewport.
 * **Dynamic Content Support:** Guide users through elements that appear or change dynamically.
 * **Customizable:** Easily extendable with custom styling, callbacks, and element targeting.
@@ -45,15 +44,15 @@ You can quickly include Cue.js in your project using a CDN (Content Delivery Net
 **Minified Version (Recommended for Production):**
 
 ```html
-<link rel="stylesheet" href="[https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.css](https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.css)">
-<script src="[https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.js](https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.js)"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.js"></script>
 ```
 
 **Unminified Version (For Development/Debugging):**
 
 ```html
-<link rel="stylesheet" href="[https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.css](https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.css)">
-<script src="[https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.umd.js](https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.umd.js)"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.css">
+<script src="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.umd.js"></script>
 ```
 
 *Note: Replace `1.0.0` with the latest version number available on npm/CDN.*
@@ -161,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ## 🎨 Styling
 
-Cue.js comes with beautiful, modern default styles inspired by Figma. You can easily customize the look and feel using CSS variables:
+Cue.js comes with beautiful, modern default styles. You can easily customize the look and feel using CSS variables:
 
 ```css
 /* Custom styles in your own CSS file */
