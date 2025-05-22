@@ -72,11 +72,9 @@ Place these lines in the `<head>` section of your HTML file:
 **Unminified Version (For Development/Debugging):**
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@<VERSION>/dist/cue.css">
-<script src="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@<VERSION>/dist/cue.umd.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@latest/dist/cue.css">
+<script src="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@latest/dist/cue.umd.js"></script>
 ```
-
-> **Important:** Replace `<VERSION>` in the CDN URLs with the specific version of Cue.js you wish to use (e.g., `1.0.0`, `1.0.1`, `1.0.2`, etc.). You can find the latest version on the [npm package page](https://www.google.com/search?q=https://www.npmjs.com/package/%40nani_samireddy/cue.js).
 
 When using the CDN version, the `Cue` class will be globally available via `window.Cue`.
 
@@ -92,4 +90,3 @@ const cue = new Cue({ /* options */ });
 
 Once installed, you're ready to create your first tour!
 
-[Proceed to Basic Usage →](https://www.google.com/search?q=basic-usage.md)
