@@ -65,8 +65,8 @@ Place these lines in the `<head>` section of your HTML file:
 **Minified Version (Recommended for Production):**
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@/dist/cue.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@/dist/cue.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@latest/dist/cue.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@latest/dist/cue.min.js"></script>
 ```
 
 **Unminified Version (For Development/Debugging):**
