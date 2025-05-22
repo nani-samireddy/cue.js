@@ -17,6 +17,23 @@ A lightweight, flexible, and beautifully designed JavaScript library for interac
 * **Event Hooks:** Integrate with analytics or trigger custom actions at various tour lifecycle points.
 * **Keyboard Navigation:** Accessible tour controls for a better user experience.
 
+Learn more about the features and how to use them in the [documentation](https://nani-samireddy.gitbook.io/cue.js/).
+
+## 📦 Table of Contents
+- [@nani\_samireddy/cue.js](#nani_samireddycuejs)
+  - [✨ Features](#-features)
+  - [📦 Table of Contents](#-table-of-contents)
+  - [🚀 Installation](#-installation)
+    - [npm](#npm)
+    - [Yarn](#yarn)
+    - [CDN](#cdn)
+  - [💡 Usage](#-usage)
+    - [HTML Structure](#html-structure)
+    - [JavaScript](#javascript)
+  - [🎨 Styling](#-styling)
+  - [🤝 Contributing](#-contributing)
+  - [📄 License](#-license)
+
 ---
 
 ## 🚀 Installation
@@ -197,4 +214,4 @@ We welcome contributions to Cue.js\! Please see our [CONTRIBUTING.md](./CONTRIBU
 
 ## 📄 License
 
-Cue.js is [MIT licensed](https://www.google.com/search?q=LICENSE).
+Cue.js is [MIT licensed](./LICENSE).
