@@ -1,4 +1,5 @@
-// cue.js
+// import styles from './style.css';
+import './style.css';
 
 (function () {
     class Cue { // Renamed from IntroJS
@@ -633,12 +634,12 @@
         }
     }
 
-    // Expose to global scope for direct inclusion in HTML
-    if (typeof window !== 'undefined') {
-        window.Cue = Cue; // Exposed as window.Cue
-    }
-
-    // If using modules, you would typically export it like this:
-    // export default Cue;
+    // DOM Content Loaded Event
+    document.addEventListener('DOMContentLoaded', () => {
+        // Expose to global scope for direct inclusion in HTML
+        if (typeof window !== 'undefined') {
+            window.Cue = Cue; // Exposed as window.Cue
+        }     
+    });
 
 })();

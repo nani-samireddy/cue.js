@@ -1,6 +1,6 @@
 {
   "name": "@nani_samireddy/cue.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight and flexible library for interactive tours and feature walkthroughs.",
   "main": "dist/cue.js",
   "module": "dist/cue.esm.js",
@@ -13,7 +13,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "rollup -c && cp src/style.css dist/style.css",
+    "build": "rollup -c",
     "prepublishOnly": "npm run build"
   },
   "repository": {
