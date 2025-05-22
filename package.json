@@ -1,5 +1,5 @@
 {
-  "name": "cue.js",
+  "name": "@nani_samireddy/cue.js",
   "version": "1.0.0",
   "description": "A lightweight and flexible library for interactive tours and feature walkthroughs.",
   "main": "dist/cue.js",

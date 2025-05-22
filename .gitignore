@@ -1,1 +1,14 @@
 node_modules
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.vscode/ # VS Code specific files if not shared across team
+*.log
+*.zip
+*.rar
+*.tar
+.env

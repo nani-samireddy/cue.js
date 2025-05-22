@@ -1,7 +1,7 @@
-# Cue.js
+# @nani_samireddy/cue.js
 
-[![npm version](https://img.shields.io/npm/v/cue.js.svg)](https://www.npmjs.com/package/cue.js)
-[![npm downloads](https://img.shields.io/npm/dm/cue.js.svg)](https://www.npmjs.com/package/cue.js)
+[![npm version](https://img.shields.io/npm/v/@nani_samireddy/cue.js.svg)](https://www.npmjs.com/package/@nani_samireddy/cue.js)
+[![npm downloads](https://img.shields.io/npm/dm/@nani_samireddy/cue.js.svg)](https://www.npmjs.com/package/@nani_samireddy/cue.js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/nani-samireddy/cue.js?style=social)](https://github.com/nani-samireddy/cue.js/stargazers)
 
@@ -18,18 +18,24 @@ A lightweight, flexible, and beautifully designed JavaScript library for interac
 * **Event Hooks:** Integrate with analytics or trigger custom actions at various tour lifecycle points.
 * **Keyboard Navigation:** Accessible tour controls for a better user experience.
 
+---
+
 ## 🚀 Installation
 
 ### npm
 
+Install the package using npm:
+
 ```bash
-npm install cue.js
+npm install @nani_samireddy/cue.js
 ````
 
 ### Yarn
 
+Install the package using Yarn:
+
 ```bash
-yarn add cue.js
+yarn add @nani_samireddy/cue.js
 ```
 
 ### CDN
@@ -39,18 +45,20 @@ You can quickly include Cue.js in your project using a CDN (Content Delivery Net
 **Minified Version (Recommended for Production):**
 
 ```html
-<link rel="stylesheet" href="[https://cdn.jsdelivr.net/npm/cue.js@1.0.0/dist/cue.min.css](https://cdn.jsdelivr.net/npm/cue.js@1.0.0/dist/cue.min.css)">
-<script src="[https://cdn.jsdelivr.net/npm/cue.js@1.0.0/dist/cue.min.js](https://cdn.jsdelivr.net/npm/cue.js@1.0.0/dist/cue.min.js)"></script>
+<link rel="stylesheet" href="[https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.css](https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.css)">
+<script src="[https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.js](https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.min.js)"></script>
 ```
 
 **Unminified Version (For Development/Debugging):**
 
 ```html
-<link rel="stylesheet" href="[https://cdn.jsdelivr.net/npm/cue.js@1.0.0/dist/cue.css](https://cdn.jsdelivr.net/npm/cue.js@1.0.0/dist/cue.css)">
-<script src="[https://cdn.jsdelivr.net/npm/cue.js@1.0.0/dist/cue.umd.js](https://cdn.jsdelivr.net/npm/cue.js@1.0.0/dist/cue.umd.js)"></script>
+<link rel="stylesheet" href="[https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.css](https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.css)">
+<script src="[https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.umd.js](https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@1.0.0/dist/cue.umd.js)"></script>
 ```
 
 *Note: Replace `1.0.0` with the latest version number available on npm/CDN.*
+
+-----
 
 ## 💡 Usage
 
@@ -66,11 +74,22 @@ Ensure your HTML elements have unique IDs or accessible CSS classes for `Cue.js`
 
 ### JavaScript
 
-```javascript
-import Cue from 'cue.js'; // If using a module bundler (Webpack, Vite, Parcel)
-// If using CDN, `Cue` will be globally available: `const cue = new Cue();`
+If you're using a module bundler (like Webpack, Vite, Parcel), import `Cue` like this:
 
+```javascript
+import Cue from '@nani_samireddy/cue.js';
+
+// Also import the CSS. How this works depends on your bundler's configuration.
+// Common ways:
+// import '@nani_samireddy/cue.js/dist/cue.css'; // Or cue.min.css
+// import '@nani_samireddy/cue.js/style.css'; // If you've configured your bundler to look in src/ for 'style.css'
+```
+
+If you're using the **CDN version** or **vanilla JavaScript**, `Cue` will be globally available as `window.Cue`.
+
+```javascript
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Cue.js
     const cue = new Cue({
         // Global options (optional)
         overlay: true,          // Show dimmed overlay (default: true)
@@ -138,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
+-----
+
 ## 🎨 Styling
 
 Cue.js comes with beautiful, modern default styles inspired by Figma. You can easily customize the look and feel using CSS variables:
@@ -167,6 +188,14 @@ Cue.js comes with beautiful, modern default styles inspired by Figma. You can ea
 }
 ```
 
+-----
+
 ## 🤝 Contributing
 
 We welcome contributions to Cue.js\! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
+
+-----
+
+## 📄 License
+
+Cue.js is [MIT licensed](https://www.google.com/search?q=LICENSE).
