@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/nani-samireddy/cue.js/issues"
   },
-  "homepage": "https://nani-samireddy.gitbook.io/cue.js",
+  "homepage": "https://cue-js.gitbook.io/docs",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",

@@ -17,7 +17,7 @@ A lightweight, flexible, and beautifully designed JavaScript library for interac
 * **Event Hooks:** Integrate with analytics or trigger custom actions at various tour lifecycle points.
 * **Keyboard Navigation:** Accessible tour controls for a better user experience.
 
-Learn more about the features and how to use them in the [documentation](https://nani-samireddy.gitbook.io/cue.js/).
+Learn more about the features and how to use them in the [documentation](https://cue-js.gitbook.io/docs).
 
 ## 📦 Table of Contents
 - [@nani\_samireddy/cue.js](#nani_samireddycuejs)
