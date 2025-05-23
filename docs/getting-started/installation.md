@@ -8,49 +8,9 @@ Getting started with Cue.js is quick and easy. You can integrate it into your pr
 
 ### Choose Your Installation Method
 
-#### npm
+{% tabs %}
+{% tab title="CDN" %}
 
-If you're using Node.js and a package manager like npm, run the following command in your project's terminal:
-
-```bash
-npm install @nani_samireddy/cue.js
-```
-
-This will add `cue.js` as a dependency in your `package.json` file.
-
-Once installed, you can import Cue.js into your JavaScript modules:
-
-```javascript
-// For ES Modules (used with bundlers like Webpack, Vite, Parcel)
-import Cue from '@nani_samireddy/cue.js';
-
-// Don't forget to import the CSS as well!
-// The exact path might vary slightly based on your bundler's configuration.
-import '@nani_samireddy/cue.js/dist/cue.min.css'; // Or cue.css for development
-```
-
-#### Yarn
-
-If you prefer Yarn as your package manager, use this command in your project's terminal:
-
-```bash
-yarn add @nani_samireddy/cue.js
-```
-
-This will add `cue.js` as a dependency in your `package.json` file.
-
-After installation, you can import Cue.js into your JavaScript modules:
-
-```javascript
-// For ES Modules (used with bundlers like Webpack, Vite, Parcel)
-import Cue from '@nani_samireddy/cue.js';
-
-// Don't forget to import the CSS as well!
-// The exact path might vary slightly based on your bundler's configuration.
-import '@nani_samireddy/cue.js/dist/cue.min.css'; // Or cue.css for development
-```
-
-#### CDN
 
 For the quickest setup, you can include Cue.js directly in your HTML using CDN links. This is ideal for simple projects or prototyping, as it doesn't require any build tools.
 
@@ -77,6 +37,50 @@ When using the CDN version, the `Cue` class will be globally available via `wind
 const cue = new Cue({ /* options */ });
 // ...
 ```
+{% endtab %}
+
+{% tab title="NPM" %}
+If you're using Node.js and a package manager like npm, run the following command in your project's terminal:
+
+```bash
+npm install @nani_samireddy/cue.js
+```
+
+This will add `cue.js` as a dependency in your `package.json` file.
+
+Once installed, you can import Cue.js into your JavaScript modules:
+
+```javascript
+// For ES Modules (used with bundlers like Webpack, Vite, Parcel)
+import Cue from '@nani_samireddy/cue.js';
+
+// Don't forget to import the CSS as well!
+// The exact path might vary slightly based on your bundler's configuration.
+import '@nani_samireddy/cue.js/dist/cue.min.css'; // Or cue.css for development
+```
+{% endtab %}
+
+{% tab title="YARN" %}
+If you prefer Yarn as your package manager, use this command in your project's terminal:
+
+```bash
+yarn add @nani_samireddy/cue.js
+```
+
+This will add `cue.js` as a dependency in your `package.json` file.
+
+After installation, you can import Cue.js into your JavaScript modules:
+
+```javascript
+// For ES Modules (used with bundlers like Webpack, Vite, Parcel)
+import Cue from '@nani_samireddy/cue.js';
+
+// Don't forget to import the CSS as well!
+// The exact path might vary slightly based on your bundler's configuration.
+import '@nani_samireddy/cue.js/dist/cue.min.css'; // Or cue.css for development
+```
+{% endtab %}
+{% endtabs %}
 
 ***
 
