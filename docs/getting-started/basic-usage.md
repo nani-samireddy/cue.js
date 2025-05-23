@@ -90,6 +90,12 @@ In the example above, we defined a single tour step with four essential properti
 
 ***
 
+### Try It Now
+
+{% embed url="https://stackblitz.com/edit/stackblitz-starters-fihnmknq?embed=1&file=script.js" fullWidth="true" %}
+
+***
+
 ### What Happens Next?
 
 With these simple steps, when you click the "Start Tour" button, Cue.js will:
