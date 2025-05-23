@@ -1,6 +1,6 @@
 ---
 icon: hand-wave
-cover: https://gitbookio.github.io/onboarding-template-images/header.png
+cover: .gitbook/assets/Slide 16_9 - 1 (1).png
 coverY: 0
 layout:
   cover:
@@ -39,4 +39,3 @@ Ready to guide your users? Let's get started!
 
 * [Installation](getting-started/installation.md) - How to add Cue.js to your project.
 * [Basic Usage](getting-started/basic-usage.md) - Create your very first guided tour.
-
