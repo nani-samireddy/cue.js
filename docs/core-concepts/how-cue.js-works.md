@@ -61,6 +61,10 @@ A Cue.js tour follows a predictable lifecycle, allowing you to hook into various
 
 > **Tip:** Understanding these lifecycle events is key for building advanced and dynamic tours. You can learn more about them in the Tour Lifecycle & Events page.
 
+### Try It Now
+
+{% embed url="https://stackblitz.com/edit/stackblitz-starters-fihnmknq?embed=1&file=script.js" fullWidth="true" %}
+
 ***
 
 ### Next Steps
