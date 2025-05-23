@@ -1,12 +1,6 @@
----
-description: >-
-  Get started with Cue.js. Learn how to install the lightweight JavaScript tour
-  library via npm, Yarn, or CDN for quick integration into your web project
----
-
 # Installation
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><picture><source srcset="../.gitbook/assets/dark-theme.svg" media="(prefers-color-scheme: dark)"><img src="../.gitbook/assets/light-theme.svg" alt="" width="150"></picture><figcaption></figcaption></figure>
 
 Getting started with Cue.js is quick and easy. You can integrate it into your project using popular package managers like npm or Yarn, or you can simply include it directly via a Content Delivery Network (CDN).
 
@@ -89,4 +83,3 @@ const cue = new Cue({ /* options */ });
 ### Next Steps
 
 Once installed, you're ready to create your first tour!
-
