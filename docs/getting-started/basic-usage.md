@@ -84,6 +84,10 @@ In the example above, we defined a single tour step with four essential properti
   * Common values are `'top'`, `'bottom'`, `'left'`, `'right'`, `'center'`.
   * If omitted, Cue.js will try to automatically determine the best position to keep the tooltip visible (`'auto'`).
 
+## Try it Now
+
+{% embed url="https://stackblitz.com/edit/stackblitz-starters-kjrisjha?file=script.js" %}
+
 ***
 
 ### What Happens Next?
