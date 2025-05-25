@@ -1,6 +1,7 @@
-// import styles from './style.css';
+// src/cue.js
 
-class Cue { // Renamed from IntroJS
+// 2. Define your Cue class directly (no wrapping IIFE)
+class Cue {
     constructor(options = {}) {
         this.options = {
             overlay: true,
@@ -46,7 +47,7 @@ class Cue { // Renamed from IntroJS
             onResize: []
         };
 
-        this._eventHandlers = {}; // Store references for proper removal
+        this._eventHandlers = {};
 
         this._setupEventListeners();
     }
@@ -59,13 +60,11 @@ class Cue { // Renamed from IntroJS
      * @returns {Cue} The Cue instance for chaining.
      */
     setSteps(steps) {
-        // Filter out steps without a target, and ensure targets are processed
         this.steps = steps.filter(step => step.target).map(step => ({
             ...step,
-            // Pre-resolve target element if it's a string, for performance/simplicity
             _targetElement: typeof step.target === 'string' ? document.querySelector(step.target) : step.target
         }));
-        return this; // For chaining
+        return this;
     }
 
     /**
@@ -75,7 +74,7 @@ class Cue { // Renamed from IntroJS
     start(initialStepIndex = 0) {
         if (this.isTourActive) {
             this._log('Tour already active, exiting current and restarting.');
-            this.exit(); // If a tour is already running, exit it cleanly before starting a new one.
+            this.exit();
         }
 
         if (!this.steps || this.steps.length === 0) {
@@ -113,7 +112,6 @@ class Cue { // Renamed from IntroJS
         if (this.currentStepIndex < this.steps.length - 1) {
             this._showStep(this.currentStepIndex + 1);
         } else {
-            // Reached the last step and clicked next/done
             this.exit();
             this._triggerCallbacks('onComplete');
         }
@@ -135,11 +133,9 @@ class Cue { // Renamed from IntroJS
         if (!this.isTourActive) return;
 
         this.isTourActive = false;
-        // When exiting, `oldStepIndex` in `_cleanupElements` will correctly refer to the last active step
-        // because `currentStepIndex` is still set to the last step at this point.
         this._cleanupElements(false, this.currentStepIndex);
         this._triggerCallbacks('onExit', this.currentStepIndex);
-        this.currentStepIndex = -1; // Reset index after callbacks
+        this.currentStepIndex = -1;
         this._log('Tour exited.');
     }
 
@@ -190,8 +186,8 @@ class Cue { // Renamed from IntroJS
         const step = this.steps[stepIndex];
         if (!step) return null;
         return {
-            target: step.target, // Original target selector/element
-            _targetElement: step._targetElement, // Pre-resolved DOM element
+            target: step.target,
+            _targetElement: step._targetElement,
             title: step.title || '',
             content: step.content || '',
             position: step.position || this.options.tooltipPosition,
@@ -201,23 +197,21 @@ class Cue { // Renamed from IntroJS
             scrollToElement: typeof step.scrollToElement === 'boolean' ? step.scrollToElement : this.options.scrollToElement,
             disableInteraction: typeof step.disableInteraction === 'boolean' ? step.disableInteraction : false,
             showButtons: typeof step.showButtons === 'boolean' ? step.showButtons : this.options.showButtons,
-            // Add any other step-specific options here that were part of the step object
-            ...step // Include all other properties from the original step object
+            ...step
         };
     }
 
     async _showStep(index) {
-        const oldStepIndexForCleanup = this.currentStepIndex; // Capture current step index *before* updating
+        const oldStepIndexForCleanup = this.currentStepIndex;
         const stepOptions = this._getStepOptions(index);
         if (!stepOptions) {
             this.exit();
             return;
         }
 
-        // Always try to re-query the target element if it's a string, as DOM might change
         const targetElement = typeof stepOptions.target === 'string'
             ? document.querySelector(stepOptions.target)
-            : stepOptions._targetElement; // Use pre-resolved if not a string
+            : stepOptions._targetElement;
 
         if (!targetElement) {
             console.warn(`Cue.js: Target element "${stepOptions.target}" not found for step ${index}.`);
@@ -225,7 +219,7 @@ class Cue { // Renamed from IntroJS
                 const action = await Promise.resolve(stepOptions.onTargetNotFound(stepOptions));
                 if (action === 'skip') {
                     this._log(`Skipping step ${index} due to target not found.`);
-                    this.nextStep(); // Try next step
+                    this.nextStep();
                     return;
                 } else if (action === 'stop') {
                     this._log(`Stopping tour due to target not found for step ${index}.`);
@@ -233,47 +227,37 @@ class Cue { // Renamed from IntroJS
                     return;
                 }
             }
-            this.exit(); // Default behavior if target not found and no handler or handler didn't return 'skip'/'stop'
+            this.exit();
             return;
         }
 
-        // Call preStep if defined and is a function
         if (typeof stepOptions.preStep === 'function') {
             await Promise.resolve(stepOptions.preStep(stepOptions));
         }
 
         this._triggerCallbacks('onBeforeChange', stepOptions, index);
-        this.currentStepIndex = index; // Update current step index
+        this.currentStepIndex = index;
 
-        // Cleanup old elements while allowing them to fade out, if applicable
-        this._cleanupElements(true, oldStepIndexForCleanup); // Pass true for stepping and the old index for cleanup
+        this._cleanupElements(true, oldStepIndexForCleanup);
 
-        // Create and position elements for the new step
         this._createElements(targetElement, stepOptions);
         this._positionElements();
 
-        // Add the 'active' class to trigger CSS transitions and make them visible
-        // This is done after positioning to avoid flickering during initial render
         if (this.elements.overlay) this.elements.overlay.classList.add('active');
         if (this.elements.highlight) this.elements.highlight.classList.add('active');
         if (this.elements.tooltip) this.elements.tooltip.classList.add('active');
 
 
-        // Handle interaction disabling for the CURRENT target element
         if (stepOptions.disableInteraction) {
-            // When interaction is disabled for the target, the highlight should also
-            // not allow events to pass through to the element it covers.
-            // However, the overlay still needs to allow clicks to exit if overlayClickExits is true.
             if (this.elements.highlight) {
-                    this.elements.highlight.style.pointerEvents = 'none'; // Highlight itself is not interactive
+                 this.elements.highlight.style.pointerEvents = 'none';
             }
-            targetElement.style.pointerEvents = 'none'; // Disable interaction on the actual target
+            targetElement.style.pointerEvents = 'none';
         } else {
-            // When interaction is enabled for the target, the highlight should also allow events to pass through
             if (this.elements.highlight) {
-                this.elements.highlight.style.pointerEvents = 'none'; // Allows clicks to pass through highlight to target
+                this.elements.highlight.style.pointerEvents = 'none';
             }
-            targetElement.style.removeProperty('pointer-events'); // Ensure target is re-enabled
+            targetElement.style.removeProperty('pointer-events');
         }
 
         if (stepOptions.scrollToElement) {
@@ -281,7 +265,6 @@ class Cue { // Renamed from IntroJS
         }
 
         this._triggerCallbacks('onChange', stepOptions, index);
-        // Use a slight delay for onAfterChange if CSS transitions are used
         setTimeout(() => {
             this._triggerCallbacks('onAfterChange', stepOptions, index);
         }, this.options.transitionDuration);
@@ -290,10 +273,9 @@ class Cue { // Renamed from IntroJS
     _createElements(targetElement, stepOptions) {
         const body = document.body;
 
-        // Overlay
         if (this.options.overlay) {
             this.elements.overlay = document.createElement('div');
-            this.elements.overlay.className = 'cue-overlay'; // Updated class name
+            this.elements.overlay.className = 'cue-overlay';
             if (this.options.overlayClickExits) {
                 this._eventHandlers.overlayClick = () => this.exit();
                 this.elements.overlay.addEventListener('click', this._eventHandlers.overlayClick);
@@ -301,17 +283,15 @@ class Cue { // Renamed from IntroJS
             body.appendChild(this.elements.overlay);
         }
 
-        // Highlight
         this.elements.highlight = document.createElement('div');
-        this.elements.highlight.className = 'cue-highlight'; // Updated class name
+        this.elements.highlight.className = 'cue-highlight';
         if (stepOptions.highlightClass) {
             this.elements.highlight.classList.add(stepOptions.highlightClass);
         }
         body.appendChild(this.elements.highlight);
 
-        // Tooltip
         this.elements.tooltip = document.createElement('div');
-        this.elements.tooltip.className = 'cue-tooltip'; // Updated class name
+        this.elements.tooltip.className = 'cue-tooltip';
         if (stepOptions.tooltipClass) {
             this.elements.tooltip.classList.add(stepOptions.tooltipClass);
         }
@@ -358,7 +338,6 @@ class Cue { // Renamed from IntroJS
         `;
         body.appendChild(this.elements.tooltip);
 
-        // Add event listeners for buttons within the tooltip
         if (stepOptions.showButtons) {
             const skipButton = this.elements.tooltip.querySelector('.cue-skip');
             if (skipButton) {
@@ -474,7 +453,7 @@ class Cue { // Renamed from IntroJS
 
                     // If horizontally out of bounds, try to center horizontally (viewport-relative)
                     if (left < 0 || left + tooltipRect.width > viewportWidth) {
-                            left = Math.max(10, (viewportWidth / 2) - (tooltipRect.width / 2)); // 10px margin from edge
+                         left = Math.max(10, (viewportWidth / 2) - (tooltipRect.width / 2)); // 10px margin from edge
                     }
 
                     // If top/bottom still out of bounds, try right
@@ -629,19 +608,6 @@ class Cue { // Renamed from IntroJS
             }
         });
     }
-}
-
-// DOM Content Loaded Event
-document.addEventListener('DOMContentLoaded', () => {
-    // Expose to global scope for direct inclusion in HTML
-    if (typeof window !== 'undefined') {
-        window.Cue = Cue; // Exposed as window.Cue
-    }     
-});
-
-// Export for module systems
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = Cue; // CommonJS export
 }
 
 export { Cue as default };
