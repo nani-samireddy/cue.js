@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cue.js Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@latest/dist/cue.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@nani_samireddy/cue.js@latest/dist/cue.min.js"></script>
+    <style>
+        /* Basic layout for demonstration purposes */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f7f6;
+            min-height: 1200px; /* To allow scrolling for demo */
+        }
+        header, .section, footer {
+            background-color: #fff;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            background-color: #6c757d;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #5a6268;
+        }
+        #hero-section {
+            background-color: #e6f7ff;
+            text-align: center;
+            padding: 80px 30px;
+        }
+        #call-to-action {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        #features-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .feature-card {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33% - 40px); /* 3 cards per row */
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .feature-card h3 {
+            color: #007bff;
+        }
+        #dashboard-link {
+            background-color: #17a2b8;
+            color: white;
+        }
+        #profile-settings {
+            background-color: #ffc107;
+            color: #333;
+        }
+        .hidden-element {
+            display: none; /* For dynamic visibility demo */
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e0f7fa;
+            border: 1px dashed #00bcd4;
+            border-radius: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button command="show-modal" command-for=""
+    <header>
+        <h1 id="main-logo">My Awesome App</h1>
+        <nav>
+            <button id="dashboard-link">Dashboard</button>
+            <button id="profile-settings">Profile</button>
+            <button id="help-button">Help</button>
+        </nav>
+    </header>
+
+    <div id="hero-section" class="section">
+        <h2 id="hero-title">Unlock Your Potential with Our Platform!</h2>
+        <p>A simple, powerful, and intuitive way to manage your tasks and projects.</p>
+        <a href="#" id="call-to-action">Get Started Now!</a>
+    </div>
+
+    <div id="features-section" class="section">
+        <div class="feature-card" id="card-1">
+            <h3>Feature One</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="feature-card" id="card-2">
+            <h3>Feature Two</h3>
+            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="feature-card" id="card-3">
+            <h3>Feature Three</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="dynamic-content-header">Dynamic Content Area</h2>
+        <button id="show-hidden-element">Show Hidden Info</button>
+        <div id="hidden-info" class="hidden-element">
+            <p>This content was hidden initially and revealed by JavaScript.</p>
+            <p>This could be a new feature that appears under certain conditions!</p>
+            <button id="hidden-element-button">Click Me!</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 My Awesome App. All rights reserved.</p>
+        <button id="start-tour-button">Start Guided Tour</button>
+    </footer>
+
+    <!-- <script src="cue.js"></script>  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startTourButton = document.getElementById('start-tour-button');
+            const showHiddenElementButton = document.getElementById('show-hidden-element');
+            const hiddenInfoElement = document.getElementById('hidden-info');
+
+            // Initialize Cue.js (Renamed from IntroJS.lite)
+            const cue = new Cue({ // Renamed constructor call
+                overlay: true,
+                showProgress: true,
+                showBullets: true,
+                nextLabel: 'Next &rarr;',
+                prevLabel: '&larr; Back',
+                skipLabel: 'No Thanks',
+                doneLabel: 'Done!',
+                debug: true
+            });
+
+            // Define your tour steps
+            const tourSteps = [
+                {
+                    target: '#main-logo',
+                    title: 'Welcome to My App!',
+                    content: 'Let\'s take a quick tour to show you around and highlight key features.',
+                    position: 'right'
+                },
+                {
+                    target: '#hero-title',
+                    title: 'Your Main Dashboard',
+                    content: 'This is the hero section where you can see important announcements and a call to action.',
+                    position: 'bottom'
+                },
+                {
+                    target: '#call-to-action',
+                    title: 'Get Started Easily',
+                    content: 'Click this button to begin your journey with our platform!',
+                    position: 'top',
+                    tooltipClass: 'custom-cta-tooltip'
+                },
+                {
+                    target: '#features-section',
+                    title: 'Key Features Overview',
+                    content: 'Here, we showcase the core functionalities that make our app stand out.',
+                    position: 'top',
+                    scrollToElement: true
+                },
+                {
+                    target: '#card-2',
+                    title: 'Dive Deeper into Feature Two',
+                    content: 'This card represents a specific feature. You can provide more details here.',
+                    position: 'bottom'
+                },
+                {
+                    target: '#dashboard-link',
+                    title: 'Access Your Dashboard',
+                    content: 'Navigate directly to your personalized dashboard from here.',
+                    position: 'bottom'
+                },
+                {
+                    target: '#profile-settings',
+                    title: 'Manage Your Profile',
+                    content: 'Update your account details and preferences in the profile section.',
+                    position: 'left'
+                },
+                {
+                    target: '#show-hidden-element',
+                    title: 'Conditional Content',
+                    content: 'Click this button to reveal a hidden section. Our tour can even guide you through dynamic content!',
+                    position: 'bottom',
+                    disableInteraction: true,
+                    postStep: (step) => {
+                         if (!hiddenInfoElement.style.display || hiddenInfoElement.style.display === 'none') {
+                            hiddenInfoElement.style.display = 'block';
+                            hiddenInfoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                         }
+                    }
+                },
+                {
+                    target: '#hidden-info',
+                    title: 'The Hidden Gem!',
+                    content: 'Great! You found our secret feature. This is useful for new user onboarding.',
+                    position: 'right',
+                    onTargetNotFound: (step) => {
+                        console.warn(`Target ${step.target} not found, perhaps the user didn't reveal it.`);
+                        alert('It looks like the hidden content isn\'t visible. Please reveal it first!');
+                        return 'stop';
+                    }
+                },
+                {
+                    target: '#hidden-element-button',
+                    title: 'Interact with Hidden Content',
+                    content: 'You can even prompt users to interact with newly revealed elements.',
+                    position: 'top'
+                },
+                {
+                    target: 'footer',
+                    title: 'That\'s the Tour!',
+                    content: 'You\'ve successfully completed the guided tour. Explore freely!',
+                    position: 'top'
+                }
+            ];
+
+            cue.setSteps(tourSteps); // Renamed method call
+
+            // Event Listeners for tour actions
+            startTourButton.addEventListener('click', () => {
+                cue.start(); // Renamed method call
+            });
+
+            showHiddenElementButton.addEventListener('click', () => {
+                hiddenInfoElement.style.display = 'block';
+            });
+
+            // --- Callback Examples ---
+            cue.onStart(() => { // Renamed method call
+                console.log('Tour has started!');
+            });
+
+            cue.onBeforeChange((stepData, newIndex) => { // Renamed method call
+                console.log(`About to change to step ${newIndex}:`, stepData.title);
+            });
+
+            cue.onChange((stepData, currentIndex) => { // Renamed method call
+                console.log(`Currently on step ${currentIndex}:`, stepData.title);
+            });
+
+            cue.onAfterChange((stepData, currentIndex) => { // Renamed method call
+                console.log(`Step ${currentIndex} fully rendered:`, stepData.title);
+            });
+
+            cue.onExit((currentStepIndex) => { // Renamed method call
+                console.log(`Tour exited at step ${currentStepIndex}.`);
+            });
+
+            cue.onComplete(() => { // Renamed method call
+                console.log('Tour completed! 🎉');
+            });
+
+            cue.onResize(() => { // Renamed method call
+                console.log('Window resized, tour elements refreshed.');
+            });
+
+            // Example of a custom button class for a step
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .custom-cta-tooltip {
+                    background-color: #28a745;
+                    color: white;
+                    border: 2px solid #1e7e34;
+                }
+                .custom-cta-tooltip .cue-tooltip-title { /* Updated class name */
+                    color: white;
+                }
+                .custom-cta-tooltip::before {
+                    border-color: #28a745 transparent transparent transparent !important;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
